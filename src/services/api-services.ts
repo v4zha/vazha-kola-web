@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PostUsr} from "../types/Types";
+import {RegUsr,LogUsr} from "../types/Types";
 class ApiService {    
     API_URL:string;
     config:any;
@@ -18,7 +18,7 @@ class ApiService {
      * @param password 
      */
     register = (username: string, email: string, password: string) => {
-        const data: PostUsr = {
+        const data: RegUsr = {
             uname: username,
             passwd: password,
             e_mail: email,
@@ -32,7 +32,7 @@ class ApiService {
      * @param password 
      */
     login = (username: string, password: string) => {
-        const data: PostUsr = {
+        const data: LogUsr = {
             uname: username,
             passwd: password,
         };

@@ -1,5 +1,9 @@
-export interface PostUsr{
-    uname:String,
-    passwd:String,
-    e_mail?:String,
+export interface LogUsr{
+    uname:string,
+    passwd:string
+}
+export interface RegUsr{
+    uname:string,
+    passwd:string,
+    e_mail:string,
 }
