@@ -1,4 +1,4 @@
-import { Formik, Field, Form} from "formik";
+import { Formik, Field, Form,ErrorMessage} from "formik";
 import * as Yup from "yup";
 import ApiServices from "../services/api-services";
 import { RegUsr } from "../types/Types";
@@ -22,7 +22,6 @@ const SignupForm = () => {
             validationSchema={SignupSchema}
             onSubmit={(values: RegUsr, { setSubmitting }) => {
                 setTimeout(() => {
-                    console.log(`submitting form\n${values}`);
                     ApiServices.register(values.uname, values.e_mail, values.passwd);
                     setSubmitting(false);
                 }, 500);
@@ -30,11 +29,14 @@ const SignupForm = () => {
         >
             <Form>
                 <label htmlFor="uname">User Name</label>
-                <Field id="uname" name="uname"></Field>
+                <Field id="uname" name="uname"/>
+                <ErrorMessage name="uname" component="span"/><br/>
                 <label htmlFor="passwd">Password</label>
-                <Field id="passwd" type="password" name="passwd"></Field>
+                <Field id="passwd" type="password" name="passwd"/>
+                <ErrorMessage name="passwd" component="span"/><br/>
                 <label htmlFor="e_mail">Email</label>
-                <Field id="e_mail" name="e_mail" ></Field>
+                <Field id="e_mail" name="e_mail" />
+                <ErrorMessage name="e_mail" component='span'/><br/>
                 <button type="submit">Submit</button>
             </Form>
         </Formik>
