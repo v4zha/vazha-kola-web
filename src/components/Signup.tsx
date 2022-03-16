@@ -1,4 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import ApiServices from "../services/api-services";
 import { RegUsr } from "../types/Types";
@@ -10,9 +11,11 @@ const SignupSchema = Yup.object().shape({
     e_mail: Yup.string().email("Invalid Format :)").required('Email Required'),
     passwd: Yup.string().min(8, "Password must have 8 char : )").required("Password Required"),
 });
-
 const SignUpForm = () => {
+    const navigator=useNavigate();
     return (
+        <div>
+        <h1>SignUp</h1>
         <Formik
             initialValues={{
                 uname: "",
@@ -20,9 +23,10 @@ const SignUpForm = () => {
                 e_mail: "",
             }}
             validationSchema={SignupSchema}
-            onSubmit={(values: RegUsr, { setSubmitting }) => {
+            onSubmit={(values: RegUsr, { setSubmitting }) => {                
                 setTimeout(() => {
                     ApiServices.register(values.uname, values.e_mail, values.passwd);
+                    navigator("/login");
                     setSubmitting(false);
                 }, 500);
             }}
@@ -42,6 +46,7 @@ const SignUpForm = () => {
                 </Form>
                 )}
         </Formik>
+        </div>
     );
 }
 export default SignUpForm;

@@ -17,7 +17,7 @@ class ApiService {
      * @param email 
      * @param password 
      */
-    register = (username: string, email: string, password: string) => {
+    register = (username: string, email: string, password: string) => { 
         const data: RegUsr = {
             uname: username,
             passwd: password,
