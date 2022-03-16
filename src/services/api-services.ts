@@ -39,7 +39,7 @@ class ApiService {
         return axios.post(this.API_URL + "/login", JSON.stringify(data), this.config).then((response) => {
             if (response.data.authorize) {
                 if (response.data.authorize == true) {
-                    console.log("User logged in ");
+                    console.log(`User auth ${JSON.stringify(response.data)}`);
                 }
                 localStorage.setItem("user", JSON.stringify(response.data));
             }

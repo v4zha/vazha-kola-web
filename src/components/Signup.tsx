@@ -1,4 +1,4 @@
-import { Formik, Field, Form,ErrorMessage} from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import ApiServices from "../services/api-services";
 import { RegUsr } from "../types/Types";
@@ -6,12 +6,12 @@ import { RegUsr } from "../types/Types";
 /**
  * SignupForm with validation using SignupSchema
  * */
-const SignupSchema=Yup.object().shape({
-    e_mail:Yup.string().email("Invalid Format :)").required('Email Required'),
-    passwd:Yup.string().min(8,"Password must have 8 char : )").required("Password Required"),
+const SignupSchema = Yup.object().shape({
+    e_mail: Yup.string().email("Invalid Format :)").required('Email Required'),
+    passwd: Yup.string().min(8, "Password must have 8 char : )").required("Password Required"),
 });
 
-const SignupForm = () => {
+const SignUpForm = () => {
     return (
         <Formik
             initialValues={{
@@ -27,7 +27,8 @@ const SignupForm = () => {
                 }, 500);
             }}
         >
-            <Form>
+            {({ isSubmitting }) => (
+                <Form>
                 <label htmlFor="uname">User Name</label>
                 <Field id="uname" name="uname"/>
                 <ErrorMessage name="uname" component="span"/><br/>
@@ -37,9 +38,10 @@ const SignupForm = () => {
                 <label htmlFor="e_mail">Email</label>
                 <Field id="e_mail" name="e_mail" />
                 <ErrorMessage name="e_mail" component='span'/><br/>
-                <button type="submit">Submit</button>
-            </Form>
+                <button type="submit" disabled={isSubmitting} >Submit</button>
+                </Form>
+                )}
         </Formik>
     );
 }
-export default SignupForm;
+export default SignUpForm;
