@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom"
-const Home=()=>(
+const Layout=()=>(
       <div>
         <ul>
           <li><Link to="/signup">SignUp</Link></li>
@@ -7,4 +7,4 @@ const Home=()=>(
         </ul>
       </div>
 ) ;
-export default Home;
+export default Layout;
